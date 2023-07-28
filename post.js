@@ -1,11 +1,11 @@
 const urlPost1 = "https://jsonplaceholder.typicode.com/posts/";
 const urlUsers = "https://jsonplaceholder.typicode.com/users/";
+const urlComments = "https://jsonplaceholder.typicode.com/posts/:id/comments";
 
 const postList1 = document.querySelector("#postList1");
 const postList2 = document.querySelector("#postList2");
 
 const myInput = document.getElementById('myInput')
-
 let usersData;
 
 fetch(urlUsers)
@@ -23,18 +23,16 @@ fetch(urlPost1)
       const titleElement = document.createElement("h3");
       titleElement.textContent = post1.title;
       
-      titleElement.addEventListener("click", () => {
-        document.getElementById("postModalTitle").textContent = post1.title;
-        document.getElementById("postModalBody").textContent = post1.body;
-
-    
-        const user = usersData.find((user) => user.id === post1.userId);
-        if (user) {
-          document.getElementById("postModalUserName").textContent = "Author: " + user.name;
-          document.getElementById("postModalUserEmail").textContent = "Email: " + user.email;
-        } 
-      });
-
+        titleElement.addEventListener("click", () => {
+          document.getElementById("postModalTitle").textContent = post1.title;
+          document.getElementById("postModalBody").textContent = post1.body;
+        
+          const user = usersData.find((user) => user.id === post1.id);
+          if (user) {
+            document.getElementById("postModalUserName").textContent = "Author: " + user.name;
+            document.getElementById("postModalUserEmail").textContent = "Email: " + user.email;
+          }
+        });
 
       titleElement.setAttribute("data-bs-toggle", "modal");
       titleElement.setAttribute("data-bs-target", "#postModal");
@@ -44,10 +42,11 @@ fetch(urlPost1)
 
       const hrElement = document.createElement("hr");
       postList1.appendChild(hrElement);
+
     });
   });
-
-let loadedPosts = 8;
+  
+let loadedPosts = 0;
 const postsPerPage = 8;
 
 function loadMorePosts() {
@@ -69,8 +68,11 @@ function loadMorePosts() {
         
         document.getElementById("postModalTitle").textContent = post1.title;
         document.getElementById("postModalBody").textContent = post1.body;
-        document.getElementById("postModalUserName").textContent = "Author: " + post1.id;
-        document.getElementById("postModalUserEmail").textContent = "Email: " + post1.id;
+        const user = usersData.find((user) => user.id === post1.id);
+        if (user) {
+          document.getElementById("postModalUserName").textContent = "Author: " + user.name;
+          document.getElementById("postModalUserEmail").textContent = "Email: " + user.email;
+        } 
       });
 
 
@@ -82,3 +84,26 @@ function loadMorePosts() {
     });
   });
 };
+
+function loadPostDataForEdit(button) {
+  const postTitle = button.getAttribute("data-post-title");
+  const postBody = button.getAttribute("data-post-body");
+
+  // Cargar los datos del LI en el modal 2
+  const titleInput = document.getElementById("postModalTitle2");
+  const bodyTextarea = document.getElementById("postModalBody2");
+
+  titleInput.value = postTitle;
+  bodyTextarea.value = postBody;
+}
+
+function savePostChanges() {
+  const editedTitle = document.getElementById("postModalTitle2").value;
+  const editedBody = document.getElementById("postModalBody2").value;
+
+  const postElement = document.querySelector("#postList1 li[data-bs-target='#postModal']");
+  postElement.querySelector("h3").textContent = editedTitle;
+  postElement.setAttribute("data-post-title", editedTitle);
+  postElement.setAttribute("data-post-body", editedBody);
+}
+
