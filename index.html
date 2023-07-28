@@ -26,9 +26,34 @@
             <ul id="postList2" class="list-group"></ul>
         </section>
         <button id="morePost" onclick="loadMorePosts()" class="btn btn-primary">More Post</button>
+
+        <div class="modal" id="postModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="postModalTitle">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="postModalBody">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-body" id="postModalUserName">
+                    <p>Modal user text here</p>
+                  </div>
+                  <div class="modal-body" id="postModalUserEmail">
+                    <p>Modal user text here</p>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Load Comments</button>
+                  <button type="button" class="btn btn-primary">Edit post</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <br>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="post.js"></script>
 </body>
 </html>
+
