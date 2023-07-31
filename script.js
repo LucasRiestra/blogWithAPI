@@ -26,6 +26,7 @@ fetch(urlPost1)
       loadedPosts += 1;
       
       titleElement.addEventListener("click", () => {
+        selectedPost = post1;
         document.getElementById("postModalTitle").textContent = post1.title;
         document.getElementById("postModalBody").textContent = post1.body;
         
@@ -67,6 +68,7 @@ function loadMorePosts() {
         titleElement.setAttribute("data-bs-toggle", "modal");
         titleElement.setAttribute("data-bs-target", "#postModal");
         titleElement.addEventListener("click", () => {
+          selectedPost = post1;
           document.getElementById("postModalTitle").textContent = post1.title;
           document.getElementById("postModalBody").textContent = post1.body;
           const user = usersData.find((user) => user.id === post1.id);
@@ -87,19 +89,9 @@ function loadMorePosts() {
     });
 }
 
-// ... (código anterior)
 
 function loadComments(button) {
   const postId = button.getAttribute("data-post-id");
-
-  // Fetch para obtener los detalles del post actual
-  fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-    .then((response) => response.json())
-    .then((postData) => {
-      // Cargar el título y el cuerpo del post en el segundo modal
-      document.getElementById("postModalTitle2").textContent = postData.title;
-      document.getElementById("postModalBody2").textContent = postData.body;
-    });
 
   // Fetch para obtener los comentarios del post actual
   fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
@@ -115,10 +107,14 @@ function loadComments(button) {
         commentsList.appendChild(commentElement);
       });
     });
+
+  // Set the title and body of the selected post in the comments modal
+  document.getElementById("postModalTitle4").textContent = selectedPost.title;
+  document.getElementById("postModalBody4").textContent = selectedPost.body;
 }
 
-// Función para cargar los datos del post en el modal de edición
 function loadPostDataForEdit(button) {
+  selectedPost = post;
   const postId = button.getAttribute("data-post-id");
   const post = arraysPost.find((post) => post.id === parseInt(postId));
 
