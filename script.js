@@ -93,14 +93,13 @@ function loadMorePosts() {
 function loadComments(button) {
   const postId = button.getAttribute("data-post-id");
 
-  // Fetch para obtener los comentarios del post actual
   fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
     .then((response) => response.json())
     .then((commentsData) => {
       const commentsList = document.querySelector("#postModalComment");
       commentsList.innerHTML = "";
 
-      // Agregar todos los comentarios al segundo modal
+    
       commentsData.forEach((comment) => {
         const commentElement = document.createElement("p");
         commentElement.textContent = `Comments: ${comment.body}`;
@@ -108,7 +107,6 @@ function loadComments(button) {
       });
     });
 
-  // Set the title and body of the selected post in the comments modal
   document.getElementById("postModalTitle4").textContent = selectedPost.title;
   document.getElementById("postModalBody4").textContent = selectedPost.body;
 }
@@ -133,21 +131,16 @@ function savePostChanges() {
     const newTitle = document.getElementById("postModalTitle3").value;
     const newBody = document.getElementById("postModalBody3").value;
 
-    // Actualizar los datos del post en la variable arraysPost
     post.title = newTitle;
     post.body = newBody;
 
-    // Actualizar el contenido del elemento <h3> en la lista de posts
     const postElement = document.querySelector(`[data-post-id="${postId}"]`);
     if (postElement) {
       postElement.textContent = newTitle;
     }
 
-    // Cerrar el modal de edición
     const editModal = new bootstrap.Modal(document.getElementById("exampleModalToggle2"));
     editModal.hide();
-
-    // Mostrar un mensaje de éxito (esto es opcional)
     alert("Changes saved successfully!");
   }
 }
