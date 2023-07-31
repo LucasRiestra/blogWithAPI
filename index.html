@@ -44,49 +44,55 @@
                     <p>Modal user text here</p>
                   </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Load Comments</button>
-                  <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Edit post</button>
+                  <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" onclick="loadComments(this)" data-post-id="1">Load Comments</button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" onclick="loadPostDataForEdit(this)" data-post-id="1">Edit post</button>
+
                 </div>
               </div>
             </div>
         </div>
         <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title" id="exampleModalToggleLabel2">Edit Post</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="postModalTitle2" class="form-label">Title</label>
-                      <input type="text" class="form-control" id="postModalTitle2">
-                    </div>
-                    <div class="mb-3">
-                      <label for="postModalBody2" class="form-label">Body</label>
-                      <textarea class="form-control" id="postModalBody2" rows="3"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="savePostChanges()">Save</button>
-                </div>
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalToggleLabel2">Edit Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="postModalTitle2" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="postModalTitle3">
+                  </div>
+                  <div class="mb-3">
+                    <label for="postModalBody2" class="form-label">Body</label>
+                    <textarea class="form-control" id="postModalBody3" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="savePostChanges()" data-post-id="1">Save Changes</button>
+
               </div>
             </div>
           </div>
+        </div>
+        
           <div class="modal" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
               <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="postModalTitle">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title" id="postModalTitle2">Modal title</h4>
                   </div>
-                  <div class="modal-body" id="postModalBody">
-                    <p>Modal body text goes here.</p>
+                  <div class="modal-header" id="postModalBody2">
+                    <h6>Modal body text goes here.</h6>
                   </div>
-                <div class="modal-body">
-                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Comments</button>
+                  <div class="modal-body" id="postModalComment">
+                    <p>Modal Comments text goes here.</p>
+                  </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -95,7 +101,7 @@
         
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="post.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
