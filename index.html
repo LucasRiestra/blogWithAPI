@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar bg-primary border-bottom border-body shadow-lg p-3 mb-5 bg-body-tertiary rounded" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="#">My Blog</a>
+                <h1 class="text-light">My Blog</h1>
             </div>
         </nav>
     </header>
@@ -18,15 +18,13 @@
         <section class="post">
             <div class="col">
                 <div class="col1">
-                    <h2>Post Title</h2>
-                    <ul id="postList1" class="list-group"></ul>
+                    <h2>Select your favorite post</h2>
+                    <ul id="postList1" class="list-group-flush list-group-numbered"></ul>
                 </div>
             </div>
-            
-            <ul id="postList2" class="list-group"></ul>
+            <ul id="postList2" class="list-group-flush list-group-numbered text-body-secondary"></ul>
+            <button id="morePost" onclick="loadMorePosts()" class="btn-lg btn-primary my-4">More Post</button>
         </section>
-        <button id="morePost" onclick="loadMorePosts()" class="btn btn-primary">More Post</button>
-
         <div class="modal" id="postModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
               <div class="modal-content">
@@ -96,7 +94,6 @@
             </div>
           </div>
         </div>
-        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="script.js"></script>

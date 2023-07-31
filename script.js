@@ -102,7 +102,7 @@ function loadComments(button) {
     
       commentsData.forEach((comment) => {
         const commentElement = document.createElement("p");
-        commentElement.textContent = `Comments: ${comment.body}`;
+        commentElement.innerHTML = `<strong>Comments:</strong> ${comment.body}`;
         commentsList.appendChild(commentElement);
       });
     });
